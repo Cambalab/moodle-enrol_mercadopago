@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 class enrol_mercadopago_plugin extends enrol_plugin {
 
     public function get_currencies() {
-        $codes = array('COP');
+        $codes = array('COP', 'ARS');
         $currencies = array();
         foreach ($codes as $c) {
             $currencies[$c] = new lang_string($c, 'core_currencies');
@@ -207,10 +207,9 @@ class enrol_mercadopago_plugin extends enrol_plugin {
                 } else {
 	                $useremail       = $USER->email;
                 }
-
                 $userphone       = $USER->phone1;
-                $type_id         = $USER->profile->type_dni;
-                $dni             = $USER->profile->dni;
+                $type_id         = $USER->profile['type_dni'];
+                $dni             = $USER->profile['dni'];
                 $useraddress     = $USER->address;
                 $usercity        = $USER->city;
                 $instancename    = $this->get_instance_name($instance);
